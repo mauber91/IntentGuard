@@ -1,0 +1,35 @@
+version: 1
+
+coverage:
+  semantic_fallback_enabled: true
+  min_confidence_for_covered: 0.80
+
+documentation:
+  adr:
+    triggers:
+      - service_boundary_change
+      - communication_pattern_change
+      - persistence_strategy_change
+      - new_shared_infrastructure
+      - security_boundary_change
+
+  tech_spec:
+    triggers:
+      - api_contract_change
+      - event_contract_change
+      - schema_change
+      - nontrivial_failure_behavior_change
+
+  prd:
+    triggers:
+      - user_visible_behavior_change
+      - business_workflow_change
+
+conformance:
+  confirmed_conflict_threshold: 0.90
+  likely_conflict_threshold: 0.75
+
+actions:
+  confirmed_conflict: HUMAN_REVIEW
+  likely_conflict: INFORMATIONAL
+  insufficient_evidence: PASS
