@@ -1,0 +1,44 @@
+{
+  "repository": "acme/checkout",
+  "pr_number": 482,
+  "facts": [
+    {
+      "kind": "communication_pattern_change",
+      "subject": "inventory_updates",
+      "predicate": "uses",
+      "object": "asynchronous_kafka",
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "path": "services/inventory/publisher.py",
+          "start_line": 18,
+          "end_line": 61,
+          "summary": "Publishes inventory changes to Kafka instead of waiting for a synchronous response."
+        }
+      ]
+    }
+  ],
+  "coverage": "COVERED",
+  "relevant_documents": [
+    {
+      "document_id": "ADR-018",
+      "path": "docs/adr/ADR-018.md",
+      "relevance_reason": "Defines inventory communication guarantees.",
+      "claim_ids": ["ADR-018:C3"],
+      "confidence": 0.98
+    }
+  ],
+  "conformance": "CONFLICTS",
+  "conflicts": [
+    {
+      "fact_id": "F1",
+      "claim_id": "ADR-018:C3",
+      "status": "CONTRADICTS",
+      "confidence": 0.95
+    }
+  ],
+  "documentation_worthy": null,
+  "suggested_artifacts": [],
+  "action": "HUMAN_REVIEW",
+  "human_resolution": null
+}
